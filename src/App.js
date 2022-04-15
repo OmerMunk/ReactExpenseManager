@@ -10,7 +10,7 @@ const DUMMY_EXPENSES = [
         date: new Date(2020, 7, 14)
     },
     {
-        id: 'e1',
+        id: 'e2',
         title: 'New TV',
         amount: 799.49,
         date: new Date(2021, 3, 12)
@@ -33,13 +33,15 @@ const App = () => {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
     const addExpenseHandler = (expense) => {
-        console.log('inside app');
-        console.log(expense);
+        // we use prevState, so when we pass a function as an argument to the state update function, and that function will automatically the latest state.
+        //this technique is essential when we update a state that depend on the previous state
         setExpenses((prevExpenses) => {
-            return ([expense, ...prevExpenses])
+            return ([expense, ...prevExpenses]) //...prevExpenses, destruct the previous expenses. that's a standard javascript feature
 
         });
     };
+
+
 
     return (
         <div>
